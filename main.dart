@@ -5,21 +5,18 @@ void main() {
 }
 
 class ItemCard extends StatelessWidget {
-  
-  ItemCard( Color labelColor, String itemName, int amount ){
-    super( { super.key } ) ;
-    labelColor: labelColor ;
-    itemName : itemName ;
-    amount = amount ;
-  }
-  
+  ItemCard(Color labelColor, String itemName, int amount, {super.key});
+
   @override
-  Widget build( BuildContext context ) {
+  Widget build(BuildContext context) {
     return Row(
-    
-    )
+      children: [
+        Icon( Icons.square, color: labelColor ),
+        Text(itemName),
+        Text(amount),
+      ],
+    );
   }
-  
 }
 
 class MyApp extends StatelessWidget {
@@ -27,10 +24,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home : Scaffold(
-        body: Column( )
-      ),
-    );
+    return MaterialApp(home: Scaffold(body: Column()));
   }
 }
