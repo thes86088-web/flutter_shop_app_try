@@ -4,16 +4,11 @@ void main() {
   runApp(const MyApp());
 }
 
-TextStyle textStyle =  TextStyle(
-  color : Colors.white  
+TextStyle textStyle = TextStyle(color: Colors.white);
 
-) ;
-
-Text newWhiteText( String t ){
-    return Text( t,
-     style : textStyle          
-     ) ;
-} 
+Text newWhiteText(String t) {
+  return Text(t, style: textStyle);
+}
 
 /*Widget addSpacing( Widget w ){
   
@@ -27,40 +22,38 @@ Text newWhiteText( String t ){
 
 
 class ItemCard extends StatelessWidget {
-  Color labelColor ;
-  String itemName ;
-  int amount ;
-    
-  ItemCard( this.labelColor, this.itemName, this.amount, {super.key});
+  Color labelColor;
+  String itemName;
+  int amount;
+
+  ItemCard(this.labelColor, this.itemName, this.amount, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column (
-      children : [ 
-         Spacer( flex : 1 ),
-         Row(
+    return (Column(
+      children: [
+        Container(child: Spacer(flex: 1), height: 10),
+        Row(
           children: [
-            Icon( Icons.square, color: labelColor ),
-            Spacer( flex : 1 ),
-            Expanded (
-              child : newWhiteText(itemName)
-            ),
-            newWhiteText( amount.toString() ),
-          Spacer( flex : 1 )
+            Icon(Icons.square, color: labelColor),
+            Container(child: Spacer(flex: 1), width: 10),
+            Expanded(child: newWhiteText(itemName)),
+            newWhiteText(amount.toString()),
           ],
-        )
-       ]
-    );
+        ),
+        Container(child: Spacer(flex: 1), height: 10),
+      ],
+    ));
   }
 }
 
-List< ItemCard > currentCart = [ 
-
-  ItemCard( Colors.lightBlue, "Milk", 1 ),
-  ItemCard( Colors.lightGreen , "Bananas", 5 ),
-  ItemCard( Colors.orange , "Chicken Eggs", 1 ),
-    
-] ;
+List<Widget /*ItemCard*/> currentCart = [
+  //Spacer(),
+  ItemCard(Colors.lightBlue, "Milk", 1),
+  ItemCard(Colors.lightGreen, "Bananas", 5),
+  ItemCard(Colors.orange, "Chicken Eggs", 1),
+  //Spacer(),
+];
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -69,23 +62,198 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar : AppBar(
-          title : newWhiteText( "Your Groceries" ),
-          backgroundColor : Colors.black 
+        appBar: AppBar(
+          title: newWhiteText("Your Groceries"),
+          backgroundColor: Colors.black,
         ),
-        body: Column( 
-           children : currentCart
-        ),
-        backgroundColor : Colors.black12
-      )
+        body: Column(children: currentCart),
+        backgroundColor: Colors.black12,
+      ),
     );
   }
 }
 
 /*PROBLEMS TO SOLVE :
 
-1. configure Spacer() for elements of ItemCard
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞════════════════════════
+The following assertion was thrown while applying parent data.:
+Incorrect use of ParentDataWidget.
+The ParentDataWidget Expanded(flex: 1) wants to apply ParentData
+of type FlexParentData to a RenderObject, which has been set up
+to accept ParentData of incompatible type ParentData.
+Usually, this means that the Expanded widget has the wrong
+ancestor RenderObjectWidget. Typically, Expanded widgets are
+placed directly inside Flex widgets.
+The offending Expanded is currently placed inside a
+ConstrainedBox widget.
+The ownership chain for the RenderObject that received the
+incompatible parent data was:
+  SizedBox.shrink ← Expanded ← Spacer ← ConstrainedBox ←
+Container ← Column ← ItemCard ← Column ←
+KeyedSubtree-[GlobalKey#09cbf] ← _BodyBuilder ← ⋯
 
-2. configure Spacer() for instances of ItemCard
+When the exception was thrown, this was the stack
+═════════════════════════════════════════════════════════════════
+
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞════════════════════════
+The following assertion was thrown while applying parent data.:
+Incorrect use of ParentDataWidget.
+The ParentDataWidget Expanded(flex: 1) wants to apply ParentData
+of type FlexParentData to a RenderObject, which has been set up
+to accept ParentData of incompatible type ParentData.
+Usually, this means that the Expanded widget has the wrong
+ancestor RenderObjectWidget. Typically, Expanded widgets are
+placed directly inside Flex widgets.
+The offending Expanded is currently placed inside a
+ConstrainedBox widget.
+The ownership chain for the RenderObject that received the
+incompatible parent data was:
+  SizedBox.shrink ← Expanded ← Spacer ← ConstrainedBox ←
+Container ← Row ← Column ← ItemCard ← Column ←
+KeyedSubtree-[GlobalKey#09cbf] ← ⋯
+
+When the exception was thrown, this was the stack
+═════════════════════════════════════════════════════════════════
+
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞════════════════════════
+The following assertion was thrown while applying parent data.:
+Incorrect use of ParentDataWidget.
+The ParentDataWidget Expanded(flex: 1) wants to apply ParentData
+of type FlexParentData to a RenderObject, which has been set up
+to accept ParentData of incompatible type ParentData.
+Usually, this means that the Expanded widget has the wrong
+ancestor RenderObjectWidget. Typically, Expanded widgets are
+placed directly inside Flex widgets.
+The offending Expanded is currently placed inside a
+ConstrainedBox widget.
+The ownership chain for the RenderObject that received the
+incompatible parent data was:
+  SizedBox.shrink ← Expanded ← Spacer ← ConstrainedBox ←
+Container ← Column ← ItemCard ← Column ←
+KeyedSubtree-[GlobalKey#09cbf] ← _BodyBuilder ← ⋯
+
+When the exception was thrown, this was the stack
+═════════════════════════════════════════════════════════════════
+
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞════════════════════════
+The following assertion was thrown while applying parent data.:
+Incorrect use of ParentDataWidget.
+The ParentDataWidget Expanded(flex: 1) wants to apply ParentData
+of type FlexParentData to a RenderObject, which has been set up
+to accept ParentData of incompatible type ParentData.
+Usually, this means that the Expanded widget has the wrong
+ancestor RenderObjectWidget. Typically, Expanded widgets are
+placed directly inside Flex widgets.
+The offending Expanded is currently placed inside a
+ConstrainedBox widget.
+The ownership chain for the RenderObject that received the
+incompatible parent data was:
+  SizedBox.shrink ← Expanded ← Spacer ← ConstrainedBox ←
+Container ← Column ← ItemCard ← Column ←
+KeyedSubtree-[GlobalKey#09cbf] ← _BodyBuilder ← ⋯
+
+When the exception was thrown, this was the stack
+═════════════════════════════════════════════════════════════════
+
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞════════════════════════
+The following assertion was thrown while applying parent data.:
+Incorrect use of ParentDataWidget.
+The ParentDataWidget Expanded(flex: 1) wants to apply ParentData
+of type FlexParentData to a RenderObject, which has been set up
+to accept ParentData of incompatible type ParentData.
+Usually, this means that the Expanded widget has the wrong
+ancestor RenderObjectWidget. Typically, Expanded widgets are
+placed directly inside Flex widgets.
+The offending Expanded is currently placed inside a
+ConstrainedBox widget.
+The ownership chain for the RenderObject that received the
+incompatible parent data was:
+  SizedBox.shrink ← Expanded ← Spacer ← ConstrainedBox ←
+Container ← Row ← Column ← ItemCard ← Column ←
+KeyedSubtree-[GlobalKey#09cbf] ← ⋯
+
+When the exception was thrown, this was the stack
+═════════════════════════════════════════════════════════════════
+
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞════════════════════════
+The following assertion was thrown while applying parent data.:
+Incorrect use of ParentDataWidget.
+The ParentDataWidget Expanded(flex: 1) wants to apply ParentData
+of type FlexParentData to a RenderObject, which has been set up
+to accept ParentData of incompatible type ParentData.
+Usually, this means that the Expanded widget has the wrong
+ancestor RenderObjectWidget. Typically, Expanded widgets are
+placed directly inside Flex widgets.
+The offending Expanded is currently placed inside a
+ConstrainedBox widget.
+The ownership chain for the RenderObject that received the
+incompatible parent data was:
+  SizedBox.shrink ← Expanded ← Spacer ← ConstrainedBox ←
+Container ← Column ← ItemCard ← Column ←
+KeyedSubtree-[GlobalKey#09cbf] ← _BodyBuilder ← ⋯
+
+When the exception was thrown, this was the stack
+═════════════════════════════════════════════════════════════════
+
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞════════════════════════
+The following assertion was thrown while applying parent data.:
+Incorrect use of ParentDataWidget.
+The ParentDataWidget Expanded(flex: 1) wants to apply ParentData
+of type FlexParentData to a RenderObject, which has been set up
+to accept ParentData of incompatible type ParentData.
+Usually, this means that the Expanded widget has the wrong
+ancestor RenderObjectWidget. Typically, Expanded widgets are
+placed directly inside Flex widgets.
+The offending Expanded is currently placed inside a
+ConstrainedBox widget.
+The ownership chain for the RenderObject that received the
+incompatible parent data was:
+  SizedBox.shrink ← Expanded ← Spacer ← ConstrainedBox ←
+Container ← Column ← ItemCard ← Column ←
+KeyedSubtree-[GlobalKey#09cbf] ← _BodyBuilder ← ⋯
+
+When the exception was thrown, this was the stack
+═════════════════════════════════════════════════════════════════
+
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞════════════════════════
+The following assertion was thrown while applying parent data.:
+Incorrect use of ParentDataWidget.
+The ParentDataWidget Expanded(flex: 1) wants to apply ParentData
+of type FlexParentData to a RenderObject, which has been set up
+to accept ParentData of incompatible type ParentData.
+Usually, this means that the Expanded widget has the wrong
+ancestor RenderObjectWidget. Typically, Expanded widgets are
+placed directly inside Flex widgets.
+The offending Expanded is currently placed inside a
+ConstrainedBox widget.
+The ownership chain for the RenderObject that received the
+incompatible parent data was:
+  SizedBox.shrink ← Expanded ← Spacer ← ConstrainedBox ←
+Container ← Row ← Column ← ItemCard ← Column ←
+KeyedSubtree-[GlobalKey#09cbf] ← ⋯
+
+When the exception was thrown, this was the stack
+═════════════════════════════════════════════════════════════════
+
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞════════════════════════
+The following assertion was thrown while applying parent data.:
+Incorrect use of ParentDataWidget.
+The ParentDataWidget Expanded(flex: 1) wants to apply ParentData
+of type FlexParentData to a RenderObject, which has been set up
+to accept ParentData of incompatible type ParentData.
+Usually, this means that the Expanded widget has the wrong
+ancestor RenderObjectWidget. Typically, Expanded widgets are
+placed directly inside Flex widgets.
+The offending Expanded is currently placed inside a
+ConstrainedBox widget.
+The ownership chain for the RenderObject that received the
+incompatible parent data was:
+  SizedBox.shrink ← Expanded ← Spacer ← ConstrainedBox ←
+Container ← Column ← ItemCard ← Column ←
+KeyedSubtree-[GlobalKey#09cbf] ← _BodyBuilder ← ⋯
+
+When the exception was thrown, this was the stack
+═════════════════════════════════════════════════════════════════
+
 
 */
