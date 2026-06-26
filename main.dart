@@ -23,11 +23,23 @@ class ItemCard extends StatelessWidget {
   }
 }
 
+
+List< ItemCard > currentCart = [] ;
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Scaffold(body: Column()));
+    return MaterialApp(
+      home: Scaffold(
+        appBar : AppBar(
+          title : Text( "Your Groceries" ) 
+        ),
+        body: Column( 
+           children : currentCart
+        )
+      )
+    );
   }
 }
