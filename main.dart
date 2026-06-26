@@ -5,7 +5,11 @@ void main() {
 }
 
 class ItemCard extends StatelessWidget {
-  ItemCard(Color labelColor, String itemName, int amount, {super.key});
+  Color labelColor ;
+  String itemName ;
+  int amount ;
+    
+  ItemCard( this.labelColor, this.itemName, this.amount, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +17,7 @@ class ItemCard extends StatelessWidget {
       children: [
         Icon( Icons.square, color: labelColor ),
         Text(itemName),
-        Text(amount),
+        Text( amount.toString() ),
       ],
     );
   }
