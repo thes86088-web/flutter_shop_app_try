@@ -4,6 +4,18 @@ void main() {
   runApp(const MyApp());
 }
 
+TextStyle textStyle =  TextStyle(
+  color : Colors.white  
+
+) ;
+
+Text newWhiteText( String t ){
+    return Text( t,
+     style : textStyle          
+     ) ;
+} 
+  
+
 class ItemCard extends StatelessWidget {
   Color labelColor ;
   String itemName ;
@@ -16,8 +28,10 @@ class ItemCard extends StatelessWidget {
     return Row(
       children: [
         Icon( Icons.square, color: labelColor ),
-        Text(itemName),
-        Text( amount.toString() ),
+        Expanded (
+          child : newWhiteText(itemName)
+        ),
+        newWhiteText( amount.toString() ),
       ],
     );
   }
@@ -40,7 +54,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar : AppBar(
-          title : Text( "Your Groceries" ),
+          title : newWhiteText( "Your Groceries" ),
           backgroundColor : Colors.black 
         ),
         body: Column( 
@@ -54,8 +68,8 @@ class MyApp extends StatelessWidget {
 
 /*PROBLEMS TO SOLVE :
 
-1. no spacing between name and amount of items -> warp name in Expanded()
+1. no spacing between labelColor and name -> add space in between them
 
-2. text not visible on dark background -> change font color to white
+2. no spacing in between ItemCards -> make spacing at top and bottom as part of widget
 
 */
