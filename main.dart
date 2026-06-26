@@ -14,7 +14,17 @@ Text newWhiteText( String t ){
      style : textStyle          
      ) ;
 } 
+
+/*Widget addSpacing( Widget w ){
   
+  return Column (
+    children : [
+    Spacer(), w, Spacer()
+    ]
+  );
+}
+*/
+
 
 class ItemCard extends StatelessWidget {
   Color labelColor ;
@@ -25,18 +35,24 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon( Icons.square, color: labelColor ),
-        Expanded (
-          child : newWhiteText(itemName)
-        ),
-        newWhiteText( amount.toString() ),
-      ],
+    return Column (
+      children : [ 
+         Spacer( flex : 1 ),
+         Row(
+          children: [
+            Icon( Icons.square, color: labelColor ),
+            Spacer( flex : 1 ),
+            Expanded (
+              child : newWhiteText(itemName)
+            ),
+            newWhiteText( amount.toString() ),
+          Spacer( flex : 1 )
+          ],
+        )
+       ]
     );
   }
 }
-
 
 List< ItemCard > currentCart = [ 
 
@@ -68,8 +84,8 @@ class MyApp extends StatelessWidget {
 
 /*PROBLEMS TO SOLVE :
 
-1. no spacing between labelColor and name -> add space in between them
+1. configure Spacer() for elements of ItemCard
 
-2. no spacing in between ItemCards -> make spacing at top and bottom as part of widget
+2. configure Spacer() for instances of ItemCard
 
 */
