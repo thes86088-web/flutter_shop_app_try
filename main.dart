@@ -24,7 +24,13 @@ class ItemCard extends StatelessWidget {
 }
 
 
-List< ItemCard > currentCart = [] ;
+List< ItemCard > currentCart = [ 
+
+  ItemCard( Colors.lightBlue, "Milk", 1 ),
+  ItemCard( Colors.lightGreen , "Bananas", 5 ),
+  ItemCard( Colors.orange , "Chicken Eggs", 1 ),
+    
+] ;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -34,12 +40,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar : AppBar(
-          title : Text( "Your Groceries" ) 
+          title : Text( "Your Groceries" ),
+          backgroundColor : Colors.black 
         ),
         body: Column( 
            children : currentCart
-        )
+        ),
+        backgroundColor : Colors.black12
       )
     );
   }
 }
+
+/*PROBLEMS TO SOLVE :
+
+1. no spacing between name and amount of items -> warp name in Expanded()
+
+2. text not visible on dark background -> change font color to white
+
+*/
